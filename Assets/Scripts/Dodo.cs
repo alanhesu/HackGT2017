@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Dodo : MonoBehaviour {   
+    public Vector2 pos;
 
 	// Use this for initialization
 	void Start () {
@@ -13,4 +14,10 @@ public class Player : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void StartFlying(float startHeight)
+    {
+        pos.x = 0;
+        pos.y = startHeight;
+    }
 }
