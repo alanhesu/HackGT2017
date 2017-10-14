@@ -13,7 +13,7 @@ public class KinectManager : MonoBehaviour {
     private BodyFrameReader _bodyFrameReader;
     private Body[] _bodies = null;
 
-    public GameObject kinectAvailableText;
+    //public GameObject kinectAvailableText;
     public Text handXText;
     private ulong personID = 0;
     public bool IsAvailable;
@@ -46,13 +46,14 @@ public class KinectManager : MonoBehaviour {
         {
             IsAvailable = _sensor.IsAvailable;
 
-            kinectAvailableText.SetActive(IsAvailable);
+            //kinectAvailableText.SetActive(IsAvailable);
 
             _bodyFrameReader = _sensor.BodyFrameSource.OpenReader();
 
             if (!_sensor.IsOpen)
             {
                 _sensor.Open();
+                Debug.Log("Open");
             }
 
             _bodies = new Body[_sensor.BodyFrameSource.BodyCount];
@@ -63,6 +64,7 @@ public class KinectManager : MonoBehaviour {
 	void Update () {
         IsAvailable = _sensor.IsAvailable;
         CameraSpacePoint postion;
+        bool found = false;
 
         if (_bodyFrameReader != null)
         {
@@ -83,15 +85,25 @@ public class KinectManager : MonoBehaviour {
                         postion = body.Joints[JointType.HandRight].Position;
                         handRight = new Vector3(postion.X, postion.Y, postion.Z);
 
-                    } else {
-                        personID = Calibrate();
+                        found = true;
+                        Debug.Log("Person ID: " + personID);
                     }
+                    Debug.Log("Hello");
 
                 }
+                if (!found)
+                {
+                    personID = Calibrate();
+                }
+
+                frame.Dispose();
+                frame = null;
+            }
+            else
+            {
+                Debug.Log("No Frame");
             }
 
-            frame.Dispose();
-            frame = null;
         }
 
     }
@@ -108,8 +120,8 @@ public class KinectManager : MonoBehaviour {
             i++;
         }
 
-        float min = distance[i];
-        ulong id = _bodies[i].TrackingId;
+        float min = distance[i - 1];
+        ulong id = _bodies[i - 1].TrackingId;
         for (i = 0; i < distance.Length; i++) {
             if (min > distance[i])
             {

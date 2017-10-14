@@ -32,6 +32,6 @@ public class FollowDodo : MonoBehaviour {
                 transform.position = offset + lockView + dodo.transform.position;
             }        
         }
-        Debug.Log(transform.position);
+        //Debug.Log(transform.position);
     }
 }
