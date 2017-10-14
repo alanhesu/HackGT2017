@@ -102,6 +102,9 @@ public class KinectManager : MonoBehaviour {
 
                 frame.Dispose();
                 frame = null;
+            } else
+            {
+                Debug.Log("No frames");
             }            
 
         }
@@ -111,26 +114,20 @@ public class KinectManager : MonoBehaviour {
     //Calibrate which person to track
     ulong Calibrate ()
     {
-        float[] distance = new float[_bodies.Length];
-        int i = 0;
+        float distance;
+        ulong id = 0;
         CameraSpacePoint position;
+        float min = 99999999;
         foreach (var pers in _bodies.Where(b => b.IsTracked)) {
             position = pers.Joints[JointType.Head].Position;
-            distance[i] = Mathf.Sqrt((position.X * position.X) + (position.Y * position.Y) + (position.Z * position.Z));
-            Debug.Log("" + distance[i] + "    " + i + "      " + pers.TrackingId);
-            i++;
-        }
-
-        float min = 9999;
-        ulong id = _bodies[i - 1].TrackingId;       
-        for (i = 0; i < distance.Length; i++) {
-            if (min < distance[i])
+            distance = Mathf.Sqrt((position.X * position.X) + (position.Y * position.Y) + (position.Z * position.Z));
+            if (min < distance)
             {
-                min = distance[i];
-                id = _bodies[i].TrackingId;               
+                min = distance;
+                id = pers.TrackingId;
             }
-        }
-        Debug.Log(id);
+            Debug.Log("" + distance + "      " + pers.TrackingId + "    " + id);
+        }    
         return id;
     }
 
