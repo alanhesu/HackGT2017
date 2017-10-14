@@ -14,8 +14,8 @@ public class KinectManager : MonoBehaviour {
     private Body[] _bodies = null;
 
     //public GameObject kinectAvailableText;
-    public Text handXText;
-    private ulong personID = 0;
+    //public Text handXText;
+    private ulong personID;
     public bool IsAvailable;
 
     public Vector3 handLeft;
@@ -41,6 +41,7 @@ public class KinectManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         _sensor = KinectSensor.GetDefault();
+        personID = 1;
 
         if (_sensor != null)
         {
@@ -88,7 +89,10 @@ public class KinectManager : MonoBehaviour {
                         found = true;
                         Debug.Log("Person ID: " + personID);
                     }
-                    Debug.Log("Hello");
+                    else
+                    {
+                        Debug.Log("Failed: " + body.TrackingId);
+                    }                    
 
                 }
                 if (!found)
@@ -98,11 +102,7 @@ public class KinectManager : MonoBehaviour {
 
                 frame.Dispose();
                 frame = null;
-            }
-            else
-            {
-                Debug.Log("No Frame");
-            }
+            }            
 
         }
 
@@ -114,22 +114,23 @@ public class KinectManager : MonoBehaviour {
         float[] distance = new float[_bodies.Length];
         int i = 0;
         CameraSpacePoint position;
-        foreach (Body pers in _bodies) {
+        foreach (var pers in _bodies.Where(b => b.IsTracked)) {
             position = pers.Joints[JointType.Head].Position;
             distance[i] = Mathf.Sqrt((position.X * position.X) + (position.Y * position.Y) + (position.Z * position.Z));
+            Debug.Log("" + distance[i] + "    " + i + "      " + pers.TrackingId);
             i++;
         }
 
-        float min = distance[i - 1];
-        ulong id = _bodies[i - 1].TrackingId;
+        float min = 9999;
+        ulong id = _bodies[i - 1].TrackingId;       
         for (i = 0; i < distance.Length; i++) {
-            if (min > distance[i])
+            if (min < distance[i])
             {
                 min = distance[i];
-                id = _bodies[i].TrackingId;
+                id = _bodies[i].TrackingId;               
             }
         }
-
+        Debug.Log(id);
         return id;
     }
 
