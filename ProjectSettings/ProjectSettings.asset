@@ -4,14 +4,14 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 12
-  productGUID: 4b99f7a9a87592942887797baa0e82c5
+  productGUID: 763fb09b06d09b04bac236b51001b11d
   AndroidProfiler: 0
   defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: HackGT2017
+  productName: Hack
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -230,16 +230,7 @@ PlayerSettings:
   m_BuildTargetIcons: []
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
-  m_BuildTargetVRSettings:
-  - m_BuildTarget: Standalone
-    m_Enabled: 1
-    m_Devices:
-    - Oculus
-    - OpenVR
-  - m_BuildTarget: Metro
-    m_Enabled: 1
-    m_Devices:
-    - HoloLens
+  m_BuildTargetVRSettings: []
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
   webPlayerTemplate: APPLICATION:Default
@@ -517,14 +508,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: HackGT2017
+  metroPackageName: Hack
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: HackGT2017
+  metroApplicationDescription: Hack
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
@@ -599,8 +590,8 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: a98940e9-6cdc-499c-a9d5-d3de35d127ef
-  projectName: HackGT2017 (1)
+  cloudProjectId: e074c62b-81fd-4771-9995-f7672c0ddc98
+  projectName: Hack
   organizationId: alanhesu
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
