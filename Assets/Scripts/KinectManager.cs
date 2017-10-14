@@ -79,7 +79,7 @@ public class KinectManager : MonoBehaviour {
                 {
                     IsAvailable = true;
 
-                    if (body.TrackingId == personID)
+                    if (body.TrackingId == personID)                    
                     {
                         postion = body.Joints[JointType.HandLeft].Position;
                         handLeft = new Vector3(postion.X, postion.Y, postion.Z);
@@ -87,12 +87,12 @@ public class KinectManager : MonoBehaviour {
                         handRight = new Vector3(postion.X, postion.Y, postion.Z);
 
                         found = true;
-                        Debug.Log("Person ID: " + personID);
+                        //Debug.Log("Person ID: " + personID);
                     }
                     else
                     {
-                        Debug.Log("Failed: " + body.TrackingId);
-                    }                    
+                        //Debug.Log("Failed: " + body.TrackingId);
+                    }
 
                 }
                 if (!found)
@@ -102,9 +102,6 @@ public class KinectManager : MonoBehaviour {
 
                 frame.Dispose();
                 frame = null;
-            } else
-            {
-                Debug.Log("No frames");
             }            
 
         }
@@ -121,12 +118,12 @@ public class KinectManager : MonoBehaviour {
         foreach (var pers in _bodies.Where(b => b.IsTracked)) {
             position = pers.Joints[JointType.Head].Position;
             distance = Mathf.Sqrt((position.X * position.X) + (position.Y * position.Y) + (position.Z * position.Z));
-            if (min < distance)
+            if (min > distance)
             {
                 min = distance;
                 id = pers.TrackingId;
             }
-            Debug.Log("" + distance + "      " + pers.TrackingId + "    " + id);
+            //Debug.Log("" + distance + "      " + pers.TrackingId + "    " + id);
         }    
         return id;
     }
