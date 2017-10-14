@@ -15,12 +15,16 @@ public class GameController : MonoBehaviour {
     public static State state;
     public static float launchHeight;
 
+    public Dodo dodo;    
+
 	// Use this for initialization
 	void Start () {
         cash = 0;
         score = 0;
-        launchHeight = 10;
+        launchHeight = 100;
         state = State.Planning;
+        //dodo = GameObject.Instantiate(Resources.Load("Dodo")) as Dodo;
+        dodo = Instantiate(dodo, transform.position, transform.rotation);        
 	}
 	
 	// Update is called once per frame
@@ -35,7 +39,7 @@ public class GameController : MonoBehaviour {
         }
         else if (state == State.Results)
         {
-
+            
         }
 	}
 }
