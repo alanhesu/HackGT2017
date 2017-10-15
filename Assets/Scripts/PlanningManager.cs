@@ -12,7 +12,7 @@ public class PlanningManager : MonoBehaviour {
     public void fly (string scene)
     {
         Application.LoadLevel(scene);
-        Debug.Log("Fly");
+        //Debug.Log("Fly");
     }
 
     public void upgradeStamina ()

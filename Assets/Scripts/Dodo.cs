@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Windows.Kinect;
 
 public class Dodo : MonoBehaviour {    
     private float timer = 0;
@@ -20,6 +21,8 @@ public class Dodo : MonoBehaviour {
     private float flapCount = 0;
     public int agility;
     private bool isDead;
+    public int boost;
+    private int baseBoost = 100;
 
 	// Use this for initialization
 	void Start () {        
@@ -27,6 +30,7 @@ public class Dodo : MonoBehaviour {
         rb.mass = 1;
         thrust = GameController.thrust;
         stamina = baseStam;
+        boost = baseBoost;
         stamMult = GameController.stamMult;
         agility = 20;
         isDead = false;
@@ -43,7 +47,14 @@ public class Dodo : MonoBehaviour {
         {*/        
         if (KinectManager.instance.IsAvailable)
         {
-            if ((HandRightPrevY - KinectManager.instance.handRight.y > deltaY)
+            if (KinectManager.instance.leftHandStatus == HandState.Closed
+                && KinectManager.instance.rightHandStatus == HandState.Closed && boost != 0)
+            {
+                boost--;
+                rb.velocity = new Vector3(0, 0, GameController.startVel * 2);
+                rb.AddForce(0, Physics.gravity.y, 0, ForceMode.Acceleration);
+            }
+            else if ((HandRightPrevY - KinectManager.instance.handRight.y > deltaY)
                 && (HandLeftPrevY - KinectManager.instance.handLeft.y > deltaY))
             {
                 if (stamina - Mathf.Sqrt(flapCount) * stamMult> 0)
