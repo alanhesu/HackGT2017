@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
     public enum State
@@ -23,9 +24,17 @@ public class GameController : MonoBehaviour {
     public GameObject dodo;
     public GameObject tree;
 
+    public static float thrust;
+    public static float stamMult;
+
     private GameObject[] trees;
     
 	// Use this for initialization
+
+    void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
+    }
 	void Start () {
         cash = 0;
         score = 0;
@@ -34,6 +43,8 @@ public class GameController : MonoBehaviour {
         numTree = 20;
         trees = new GameObject[numTree];
         state = State.Flying;
+        thrust = 2;
+        stamMult = .5f;
         Physics.gravity = new Vector3(0, -6, 0);
         //dodo = GameObject.Instantiate(Resources.Load("Dodo")) as Dodo;
         SpawnTree();
@@ -43,22 +54,18 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (state == State.Planning)
-        {
-
+        {           
         }
         else if (state == State.Flying)
-        {
+        {            
             AltitudeText.text = string.Format("Altitude: {0:0.000}\nDistance: {1:0.}", dodo.transform.position.y, dodo.transform.position.z);
+            UpdateTrees();
             if (dodo.transform.position.y <= 0)
             {
                 //state = State.Results;
             }
             //Debug.Log(dodo.transform.position.y);
             //AltitudeText.text = dodo.transform.position.y.ToString();
-        }
-        else if (state == State.Results)
-        {
-
         }
 	}
 
@@ -67,9 +74,9 @@ public class GameController : MonoBehaviour {
         Random rand = new Random();
 
         float xSpacing = 200;
-        
-        float zSpacingMin = 30 / (numTree/10);
-        float zSpacingAvg = 30 / (numTree/10);
+
+        float zSpacingMin = 30 / (numTree / 10);
+        float zSpacingAvg = 30 / (numTree / 10);
 
         float treePosX = 0;
         float treePosZ = 100;
@@ -89,4 +96,29 @@ public class GameController : MonoBehaviour {
         }
     }
     
+    void UpdateTrees()
+    {
+        float xSpacing = 200;
+
+        float zSpacingMin = 30 / (numTree / 10);
+        float zSpacingAvg = 30 / (numTree / 10);
+
+        float newPosX;
+        float newPosZ;
+        float newRotY;
+        for (int i = 0; i < numTree; i++)
+        {
+            newPosX = 0;
+            newPosZ = trees[i].transform.position.z;
+            newRotY = 0;
+            if (trees[i].transform.position.z < dodo.transform.position.z -10)
+            {
+                newPosX = Random.Range(0, xSpacing) - xSpacing / 2;
+                newPosZ += (zSpacingMin + zSpacingAvg/2) * numTree + Random.Range(0, zSpacingAvg) - zSpacingAvg/2;
+                newRotY = Random.Range(0, 360);
+                trees[i].transform.position = new Vector3(newPosX, 0, newPosZ);
+                trees[i].transform.rotation = Quaternion.Euler(0, newRotY, 0);
+            }
+        }
+    }
 }
