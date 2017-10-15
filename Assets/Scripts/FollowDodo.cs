@@ -36,12 +36,14 @@ public class FollowDodo : MonoBehaviour {
             {
                 transform.position = offset + dodoPos +  new Vector3(0, lockViewY, 0);
             }
-            Debug.Log((90 - Mathf.Abs(dodoPos.x) < 35) && (90 - Mathf.Abs(dodoPos.x) > 0));
+            Debug.Log((90 - Mathf.Abs(dodoPos.x) < 25) && (90 - Mathf.Abs(dodoPos.x) > 0));
             
-            if ((90 - Mathf.Abs(dodoPos.x) < 35) && (90 - Mathf.Abs(dodoPos.x) > 0))
+            if (90 - Mathf.Abs(dodoPos.x) < 25)
             {
-                transform.position = offset + new Vector3(lockViewX + Vector3.Lerp(oldPos, dodoPos, .8f).x, dodoPos.y, dodoPos.z);
-                lockViewX = Vector3.Lerp(oldPos, dodoPos, .8f).x - dodoPos.x;
+                float off = (dodoPos.x > 0) ? 65 : -65;
+                Vector3 newPos = oldPos + new Vector3(off, 0, 0);
+                transform.position = offset + new Vector3(lockViewX + Vector3.Lerp(newPos, dodoPos, .8f).x, dodoPos.y, dodoPos.z);
+                lockViewX = Vector3.Lerp(newPos, dodoPos, .8f).x - dodoPos.x;
             }
             else
             {
