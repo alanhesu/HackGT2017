@@ -1,0 +1,287 @@
+fileFormatVersion: 2
+guid: e86dba70dc022594e8cb8432a8b7fb96
+timeCreated: 1508039951
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: byellow0
+    100004: byellow1
+    100006: claws0
+    100008: claws1
+    100010: dyellow0
+    100012: dyellow1
+    100014: feather0
+    100016: feather1
+    100018: feather2
+    100020: feather3
+    100022: leg0
+    100024: leg1
+    100026: lwing0
+    100028: lwing1
+    100030: red0
+    100032: red1
+    100034: rwing0
+    100036: rwing1
+    100038: shblack0
+    100040: shblack1
+    400000: //RootNode
+    400002: byellow0
+    400004: byellow1
+    400006: claws0
+    400008: claws1
+    400010: dyellow0
+    400012: dyellow1
+    400014: feather0
+    400016: feather1
+    400018: feather2
+    400020: feather3
+    400022: leg0
+    400024: leg1
+    400026: lwing0
+    400028: lwing1
+    400030: red0
+    400032: red1
+    400034: rwing0
+    400036: rwing1
+    400038: shblack0
+    400040: shblack1
+    2300000: byellow0
+    2300002: byellow1
+    2300004: claws0
+    2300006: claws1
+    2300008: dyellow0
+    2300010: dyellow1
+    2300012: feather0
+    2300014: feather1
+    2300016: feather2
+    2300018: feather3
+    2300020: leg0
+    2300022: leg1
+    2300024: lwing0
+    2300026: lwing1
+    2300028: red0
+    2300030: red1
+    2300032: rwing0
+    2300034: rwing1
+    2300036: shblack0
+    2300038: shblack1
+    3300000: byellow0
+    3300002: byellow1
+    3300004: claws0
+    3300006: claws1
+    3300008: dyellow0
+    3300010: dyellow1
+    3300012: feather0
+    3300014: feather1
+    3300016: feather2
+    3300018: feather3
+    3300020: leg0
+    3300022: leg1
+    3300024: lwing0
+    3300026: lwing1
+    3300028: red0
+    3300030: red1
+    3300032: rwing0
+    3300034: rwing1
+    3300036: shblack0
+    3300038: shblack1
+    4300000: shblack0
+    4300002: claws0
+    4300004: rwing0
+    4300006: red0
+    4300008: feather0
+    4300010: dyellow0
+    4300012: leg0
+    4300014: lwing0
+    4300016: byellow0
+    4300018: feather1
+    4300020: shblack1
+    4300022: claws1
+    4300024: rwing1
+    4300026: red1
+    4300028: feather2
+    4300030: dyellow1
+    4300032: leg1
+    4300034: lwing1
+    4300036: byellow1
+    4300038: feather3
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black0
+    second: {fileID: 2100000, guid: 88c01cadde599c345ad2bf29bac59e17, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black1
+    second: {fileID: 2100000, guid: 0a63591b69fd9db4eb1456aaecfdc94a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black2
+    second: {fileID: 2100000, guid: 1d2523210ff1fdb44b0b453a22260794, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black3
+    second: {fileID: 2100000, guid: 7dc061a027e74c34fa9a56795b75bc18, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green0
+    second: {fileID: 2100000, guid: f507019f1028484458c23f9bd924c483, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green1
+    second: {fileID: 2100000, guid: 1fbbcfb5fb9c51d40914d63edb74ad05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orange0
+    second: {fileID: 2100000, guid: 86950cd187b815440bdc58e87832fb98, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orange1
+    second: {fileID: 2100000, guid: 9e1318129971abc4bafeb3224d1a0249, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orange2
+    second: {fileID: 2100000, guid: 914382ad9f92b604dade7f552ad20212, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orange3
+    second: {fileID: 2100000, guid: c5827255a4b6faf4c9d186628594d088, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orange4
+    second: {fileID: 2100000, guid: ee17f3e34d9b103459b35232ec441185, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orange5
+    second: {fileID: 2100000, guid: a3c92ce42c4cf144294b49c8a4125e4c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow0
+    second: {fileID: 2100000, guid: f081667c76781bb4ab467aa41432af14, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow1
+    second: {fileID: 2100000, guid: b532781f053a709439517e4a713c0f9d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow2
+    second: {fileID: 2100000, guid: 09bde949b106983489a9cb5a4ba5c397, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow3
+    second: {fileID: 2100000, guid: 651b649d11f1ba542a2a364671def222, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow4
+    second: {fileID: 2100000, guid: dd571fa7df612b546af7ba60f4ae92c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow5
+    second: {fileID: 2100000, guid: d1cf456d5c711c0498104bf894bb1534, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow6
+    second: {fileID: 2100000, guid: 0fbac54c83ddabd4f85e31e51e069ddf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow7
+    second: {fileID: 2100000, guid: 0800eb186b99b2a4ba58542187fbb4dc, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
