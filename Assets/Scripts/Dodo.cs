@@ -95,4 +95,9 @@ public class Dodo : MonoBehaviour {
         rb.transform.position = new Vector3(0, startHeight, 0);
         rb.velocity = new Vector3(0, 0, startVel);        
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("collide");
+    }
 }
