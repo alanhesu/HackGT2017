@@ -7,10 +7,13 @@ public class FollowDodo : MonoBehaviour {
     private GameObject dodo;
     private Vector3 oldPos;
     private Vector3 lockViewY;
+    private float lockZ;
 
     void Start()
     {
         offset = transform.position;
+        lockZ = offset.z;
+
     }
 
     void LateUpdate()
@@ -30,7 +33,8 @@ public class FollowDodo : MonoBehaviour {
             else
             {
                 transform.position = offset + lockViewY + dodo.transform.position;
-            }        
+            }
+            transform.position =  new Vector3(transform.position.x, transform.position.y, dodo.transform.position.z + lockZ);                  
         }
         //Debug.Log(transform.position);
     }
