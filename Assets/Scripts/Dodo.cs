@@ -9,7 +9,7 @@ public class Dodo : MonoBehaviour {
     private float timerPeriod = .3f;
     private Rigidbody rb;
 
-    private float boundPos = 90;
+    private float boundPos = 80;
 
     public float thrust;
     private float deltaY = .05f;
