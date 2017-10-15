@@ -140,7 +140,7 @@ public class GameController : MonoBehaviour {
         if (cash - numUpStam * 300 >= 0)
         {
             cash -= 300 * numUpStam;
-            stamMult *= .9f;
+            stamMult *= .7f;
             numUpStam++;
         }
     }

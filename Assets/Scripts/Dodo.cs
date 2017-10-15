@@ -19,6 +19,7 @@ public class Dodo : MonoBehaviour {
     private float stamMult;
     private float flapCount = 0;
     public int agility;
+    private bool isDead;
 
 	// Use this for initialization
 	void Start () {        
@@ -28,6 +29,7 @@ public class Dodo : MonoBehaviour {
         stamina = baseStam;
         stamMult = GameController.stamMult;
         agility = 20;
+        isDead = false;
         HandRightPrevY = 999999999;
         HandLeftPrevY = 999999999;
         StartFlying(ref rb, GameController.launchHeight, GameController.startVel);
@@ -38,7 +40,7 @@ public class Dodo : MonoBehaviour {
         /*        
         timer += Time.deltaTime;       
         if (timer >= timerPeriod && KinectManager.instance.IsAvailable)
-        {*/
+        {*/        
         if (KinectManager.instance.IsAvailable)
         {
             if ((HandRightPrevY - KinectManager.instance.handRight.y > deltaY)
@@ -107,9 +109,13 @@ public class Dodo : MonoBehaviour {
 
     private void Death()
     {
-        GameController.state = GameController.State.Planning;
-        GameController.cash += rb.transform.position.z;
-        SceneManager.LoadSceneAsync("Upgrade");
+        if (!isDead)
+        {
+            GameController.state = GameController.State.Planning;
+            GameController.cash += rb.transform.position.z;
+            SceneManager.LoadSceneAsync("Upgrade");
+            isDead = true;
+        }
         //Application.LoadLevelAsync("Upgrade");
     }
 }

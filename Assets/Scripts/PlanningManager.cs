@@ -17,27 +17,27 @@ public class PlanningManager : MonoBehaviour {
 
     public void upgradeStamina ()
     {
-        Debug.Log("Stamina");
+        //Debug.Log("Stamina");
         GameController.upgradeStam();
     }
 
     public void upgradeThrust()
     {
-        Debug.Log("Thrust");
+        //Debug.Log("Thrust");
         GameController.upgradeThrust();
     }
 
     public void upgradeStartHieght()
     {
-        Debug.Log("Hieght");
+        //Debug.Log("Hieght");
         GameController.upgradeHeight();
     }
 
     void Update()
     {
-        ThrustText.text = string.Format("+ Thrust: ${0}", GameController.numUpThrust * 300);
-        StamText.text = string.Format("+ Stamina: ${0}", GameController.numUpStam * 300);
-        HeightText.text = string.Format("+ Height: ${0}", GameController.numUpHeight * 300);
+        ThrustText.text = string.Format("[{0}] | Thrust: ${1}", GameController.numUpThrust, GameController.numUpThrust * 300);
+        StamText.text = string.Format("[{0}] | Stamina: ${1}", GameController.numUpStam, GameController.numUpStam * 300);
+        HeightText.text = string.Format("[{0}] | Height: ${1}", GameController.numUpHeight, GameController.numUpHeight * 300);
         CashText.text = string.Format("Cash: ${0:0.00}", GameController.cash);
     }
 }
