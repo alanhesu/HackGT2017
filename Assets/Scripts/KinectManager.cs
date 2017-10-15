@@ -53,7 +53,7 @@ public class KinectManager : MonoBehaviour {
             if (!_sensor.IsOpen)
             {
                 _sensor.Open();
-                Debug.Log("Open");
+                //Debug.Log("Open");
             }
 
             _bodies = new Body[_sensor.BodyFrameSource.BodyCount];

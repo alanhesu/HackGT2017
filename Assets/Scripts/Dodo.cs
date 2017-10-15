@@ -50,7 +50,7 @@ public class Dodo : MonoBehaviour {
                 }               
                 rb.AddForce(0, thrust * stamina / baseStam, 0, ForceMode.Impulse);
                 flapCount++;
-                Debug.Log("" + thrust * stamina / baseStam + "    " + flapCount);
+                //Debug.Log("" + thrust * stamina / baseStam + "    " + flapCount);
             }
             HandRightPrevY = KinectManager.instance.handRight.y;
             HandLeftPrevY = KinectManager.instance.handLeft.y;
@@ -110,5 +110,6 @@ public class Dodo : MonoBehaviour {
         GameController.state = GameController.State.Planning;
         GameController.cash += rb.transform.position.z;
         SceneManager.LoadSceneAsync("Upgrade");
+        //Application.LoadLevelAsync("Upgrade");
     }
 }

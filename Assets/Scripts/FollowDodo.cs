@@ -36,7 +36,7 @@ public class FollowDodo : MonoBehaviour {
             {
                 transform.position = offset + dodoPos +  new Vector3(0, lockViewY, 0);
             }
-            Debug.Log((90 - Mathf.Abs(dodoPos.x) < 25) && (90 - Mathf.Abs(dodoPos.x) > 0));
+            //Debug.Log((90 - Mathf.Abs(dodoPos.x) < 25) && (90 - Mathf.Abs(dodoPos.x) > 0));
             
             if (90 - Mathf.Abs(dodoPos.x) < 60)
             {
@@ -51,6 +51,6 @@ public class FollowDodo : MonoBehaviour {
             } 
             transform.position =  new Vector3(transform.position.x, transform.position.y, dodoPos.z + lockZ);                             
         }
-        Debug.Log(transform.position.x);
+        //Debug.Log(transform.position.x);
     }
 }

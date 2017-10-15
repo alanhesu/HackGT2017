@@ -28,8 +28,12 @@ public class GameController : MonoBehaviour {
     public static float stamMult;
 
     private GameObject[] trees;
-    
-	// Use this for initialization
+
+    private static int numUpStam = 1;
+    private static int numUpThrust = 1;
+    private static int numUpHeight = 1;
+
+    // Use this for initialization
 
     void Awake()
     {
@@ -122,5 +126,35 @@ public class GameController : MonoBehaviour {
                 trees[i].transform.rotation = Quaternion.Euler(0, newRotY, 0);
             }
         }
+    }
+
+    static void upgradeStam()
+    {
+        if (cash - numUpStam * 300 >= 0)
+        {
+            cash -= numUpStam;
+        }
+        stamMult += .2f;
+        numUpStam++;
+    }
+
+    static void upgradeThrust()
+    {
+        if (cash - numUpThrust * 300 >= 0)
+        {
+            cash -= numUpThrust;
+        }
+        thrust += .5f;
+        numUpThrust++;
+    }
+
+    static void upgradeHeight()
+    {
+        if (cash - numUpHeight * 300 >= 0)
+        {
+            cash -= numUpHeight;
+        }
+        launchHeight += 10f;
+        numUpHeight++;
     }
 }
