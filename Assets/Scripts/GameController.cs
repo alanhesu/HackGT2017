@@ -12,43 +12,51 @@ public class GameController : MonoBehaviour {
         Flying,
         Config
     }
-    public static float cash;
-    public static int score;
+    public static float cash = 0;
     public static State state;
-    public static float launchHeight;
+    public static float launchHeight = 10;
     public static float startVel;
     public static int numTree;
+    public static GameController control;
 
     public Text AltitudeText;
 
     public GameObject dodo;
     public GameObject tree;
 
-    public static float thrust;
-    public static float stamMult;
+    public static float thrust = 2;
+    public static float stamMult = .5f;
 
     private GameObject[] trees;
 
-    private static int numUpStam = 1;
-    private static int numUpThrust = 1;
-    private static int numUpHeight = 1;
+    public static int numUpStam = 1;
+    public static int numUpThrust = 1;
+    public static int numUpHeight = 1;
 
     // Use this for initialization
 
     void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
+        //DontDestroyOnLoad(this);
+        /*
+        if (FindObjectsOfType(GetType()).Length > 1)
+        {
+            Destroy(gameObject);
+        }
+        /*
+        if (control == null)
+        {
+            DontDestroyOnLoad(transform.gameObject);
+        } else if (control != this)
+        {
+            Destroy(gameObject);
+        }*/
     }
 	void Start () {
-        cash = 0;
-        score = 0;
-        launchHeight = 10;
         startVel = 50;
         numTree = 20;
         trees = new GameObject[numTree];
         state = State.Flying;
-        thrust = 2;
-        stamMult = .5f;
         Physics.gravity = new Vector3(0, -6, 0);
         //dodo = GameObject.Instantiate(Resources.Load("Dodo")) as Dodo;
         SpawnTree();
@@ -57,10 +65,9 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
 		if (state == State.Planning)
-        {           
+        {
+            
         }
         else if (state == State.Flying)
         {            
@@ -128,33 +135,33 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    static void upgradeStam()
+    public static void upgradeStam()
     {
         if (cash - numUpStam * 300 >= 0)
         {
-            cash -= numUpStam;
+            cash -= 300 * numUpStam;
+            stamMult *= .9f;
+            numUpStam++;
         }
-        stamMult += .2f;
-        numUpStam++;
     }
 
-    static void upgradeThrust()
+    public static void upgradeThrust()
     {
         if (cash - numUpThrust * 300 >= 0)
         {
-            cash -= numUpThrust;
+            cash -= 300 * numUpThrust;
+            thrust += .5f;
+            numUpThrust++;
         }
-        thrust += .5f;
-        numUpThrust++;
     }
 
-    static void upgradeHeight()
+    public static void upgradeHeight()
     {
         if (cash - numUpHeight * 300 >= 0)
         {
-            cash -= numUpHeight;
+            cash -= 300 * numUpHeight;
+            launchHeight += 10f;
+            numUpHeight++;
         }
-        launchHeight += 10f;
-        numUpHeight++;
     }
 }
