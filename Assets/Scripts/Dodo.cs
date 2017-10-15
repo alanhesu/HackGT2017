@@ -24,7 +24,7 @@ public class Dodo : MonoBehaviour {
         thrust = 2;
         stamina = baseStam;
         stamMult = .5f;
-        agility = 3;
+        agility = 30;
         HandRightPrevY = 999999999;
         HandLeftPrevY = 999999999;
         StartFlying(ref rb, GameController.launchHeight, GameController.startVel);
@@ -55,12 +55,12 @@ public class Dodo : MonoBehaviour {
 
             if (Mathf.Abs(KinectManager.instance.leaningPosition) > .2)
             {
-                rb.velocity = new Vector3(KinectManager.instance.leaningPosition, rb.velocity.y, rb.velocity.z);
+                rb.velocity = new Vector3(KinectManager.instance.leaningPosition * agility, rb.velocity.y, rb.velocity.z);
             }
             //Debug.Log("X  " + rb.position.x);
             //Quaternion rotTarget = Quaternion.Euler(0, 0, 45 * KinectManager.instance.leaningPosition);
             //rb.transform.rotation = Quaternion.Slerp(transform.rotation, rotTarget, .8f);
-            rb.transform.eulerAngles = new Vector3(0, 0, -45 * KinectManager.instance.leaningPosition);
+            rb.transform.eulerAngles = new Vector3(0, 0, -60 * KinectManager.instance.leaningPosition);
         }
         //}
         /*      

@@ -16,24 +16,28 @@ public class GameController : MonoBehaviour {
     public static State state;
     public static float launchHeight;
     public static float startVel;
+    public static int numTree;
 
     public Text AltitudeText;
 
     public GameObject dodo;
     public GameObject tree;
 
-    public Tree[] trees = new Tree[10];
+    private GameObject[] trees;
     
 	// Use this for initialization
 	void Start () {
         cash = 0;
         score = 0;
-        launchHeight = 100;
+        launchHeight = 10;
         startVel = 50;
+        numTree = 20;
+        trees = new GameObject[numTree];
         state = State.Flying;
-        Physics.gravity = new Vector3(0, -5, 0);
+        Physics.gravity = new Vector3(0, -6, 0);
         //dodo = GameObject.Instantiate(Resources.Load("Dodo")) as Dodo;
-        dodo = Instantiate(dodo, transform.position, transform.rotation) as GameObject;  
+        SpawnTree();
+        dodo = Instantiate(dodo, transform.position, transform.rotation) as GameObject;
 	}
 	
 	// Update is called once per frame
@@ -60,10 +64,28 @@ public class GameController : MonoBehaviour {
 
     void SpawnTree()
     {
-        float zSpacingMin = 2;
-        foreach (Tree t in trees)
+        Random rand = new Random();
+
+        float xSpacing = 200;
+        
+        float zSpacingMin = 30 / (numTree/10);
+        float zSpacingAvg = 30 / (numTree/10);
+
+        float treePosX = 0;
+        float treePosZ = 100;
+
+        float treeRotY = 0;
+
+        for (int i = 0; i < numTree; i++)
         {
-            t = Instantiate(tree,
+            treePosX = Random.Range(0, xSpacing) - xSpacing / 2;
+            treePosZ += Random.Range(0, zSpacingAvg) + zSpacingMin;
+            treeRotY = Random.Range(0, 360);
+
+            Vector3 pos = new Vector3(treePosX, 0, treePosZ);
+            Quaternion rot = Quaternion.Euler(0, treeRotY, 0);
+            trees[i] = Instantiate(tree, pos, rot) as GameObject;
+            Debug.Log("Spawn tree " + i + 1);
         }
     }
     

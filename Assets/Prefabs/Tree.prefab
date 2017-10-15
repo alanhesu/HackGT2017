@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 4668273382782406}
   - component: {fileID: 205985128708247774}
   - component: {fileID: 54644185335591814}
+  - component: {fileID: 114294008977724164}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -338,8 +339,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1981854118401742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 120.64123, y: 62.020145, z: 54.238136}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 4453427494658688}
   - {fileID: 4251324869098434}
@@ -548,6 +549,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114294008977724164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1981854118401742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987abab2409204b46b176737c0071c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135044594646885110
 SphereCollider:
   m_ObjectHideFlags: 1
