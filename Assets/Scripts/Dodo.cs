@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Dodo : MonoBehaviour {    
     private float timer = 0;
@@ -9,7 +10,7 @@ public class Dodo : MonoBehaviour {
     private float timerPeriod = .3f;
     private Rigidbody rb;
 
-    private float boundPos = 90;
+    private float boundPos = 80;
 
     public float thrust;
     private float deltaY = .05f;
@@ -23,9 +24,9 @@ public class Dodo : MonoBehaviour {
 	void Start () {        
         rb = GetComponent<Rigidbody>();
         rb.mass = 1;
-        thrust = 2;
+        thrust = GameController.thrust;
         stamina = baseStam;
-        stamMult = .5f;
+        stamMult = GameController.stamMult;
         agility = 20;
         HandRightPrevY = 999999999;
         HandLeftPrevY = 999999999;
@@ -87,7 +88,10 @@ public class Dodo : MonoBehaviour {
         {
             rb.AddForce(0, thrust, 0, ForceMode.Impulse);
         }       
-        
+        if (rb.position.y <= 0)
+        {
+            Death();
+        }
 	}
 
     void StartFlying(ref Rigidbody rb, float startHeight, float startVel)
@@ -98,6 +102,13 @@ public class Dodo : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collide");
+        Death();
+    }
+
+    private void Death()
+    {
+        GameController.state = GameController.State.Planning;
+        GameController.cash += rb.transform.position.z;
+        SceneManager.LoadSceneAsync("Upgrade");
     }
 }
