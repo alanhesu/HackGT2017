@@ -10,12 +10,13 @@ public class Wing : MonoBehaviour {
     JointMotor motor;
     private float angle = 10;
     public bool isRight;
+    private Vector3 off;
 
     public GameObject body;
 
 	// Use this for initialization
 	void Start () {
-        Rigidbody rb = GetComponent<Rigidbody>();
+        //Rigidbody rb = GetComponent<Rigidbody>();
         timer = .05f;
         /*
         rb.angularDrag = 0;
@@ -26,10 +27,12 @@ public class Wing : MonoBehaviour {
         hinge.useMotor = true;
         motor.force = 9999999999999999;
         */
+        off = body.transform.position - transform.position;
         if (isRight)
         {
             angle = -1 * angle;
         }
+        transform.parent = body.transform;
 	}
 	
 	// Update is called once per frame
@@ -46,8 +49,8 @@ public class Wing : MonoBehaviour {
             timer = 0;
         }
         //motor.targetVelocity = motorvel;
-        //motor.freeSpin = true;     
+        //motor.freeSpin = true;
         transform.RotateAround(body.transform.position, new Vector3(0, 0, 1), angle);
-        Debug.Log(Time.deltaTime);
+        //transform.position = transform.position + off;
     }
 }

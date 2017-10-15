@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour {
             AltitudeText.text = string.Format("Altitude: {0:0.000}\nDistance: {1:0.}", dodo.transform.position.y, dodo.transform.position.z);
             if (dodo.transform.position.y <= 0)
             {
-                state = State.Results;
+                //state = State.Results;
             }
             //Debug.Log(dodo.transform.position.y);
             //AltitudeText.text = dodo.transform.position.y.ToString();
@@ -85,7 +85,7 @@ public class GameController : MonoBehaviour {
             Vector3 pos = new Vector3(treePosX, 0, treePosZ);
             Quaternion rot = Quaternion.Euler(0, treeRotY, 0);
             trees[i] = Instantiate(tree, pos, rot) as GameObject;
-            Debug.Log("Spawn tree " + i + 1);
+            //Debug.Log("Spawn tree " + (i + 1));
         }
     }
     

@@ -9,6 +9,8 @@ public class Dodo : MonoBehaviour {
     private float timerPeriod = .3f;
     private Rigidbody rb;
 
+    private float boundPos = 90;
+
     public float thrust;
     private float deltaY = .05f;
     public float stamina;
@@ -24,7 +26,7 @@ public class Dodo : MonoBehaviour {
         thrust = 2;
         stamina = baseStam;
         stamMult = .5f;
-        agility = 30;
+        agility = 20;
         HandRightPrevY = 999999999;
         HandLeftPrevY = 999999999;
         StartFlying(ref rb, GameController.launchHeight, GameController.startVel);
@@ -52,8 +54,14 @@ public class Dodo : MonoBehaviour {
             HandRightPrevY = KinectManager.instance.handRight.y;
             HandLeftPrevY = KinectManager.instance.handLeft.y;
             //Debug.Log(HandRightPrevY);
-
-            if (Mathf.Abs(KinectManager.instance.leaningPosition) > .2)
+            
+            if (rb.transform.position.x < -1 * boundPos && KinectManager.instance.leaningPosition < 0)
+            {
+                rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
+            } else if (rb.transform.position.x > boundPos && KinectManager.instance.leaningPosition > 0)
+            {
+                rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
+            } else if (Mathf.Abs(KinectManager.instance.leaningPosition) > .15)
             {
                 rb.velocity = new Vector3(KinectManager.instance.leaningPosition * agility, rb.velocity.y, rb.velocity.z);
             }
