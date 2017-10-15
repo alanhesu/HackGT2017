@@ -13,8 +13,6 @@ public class KinectManager : MonoBehaviour {
     private BodyFrameReader _bodyFrameReader;
     private Body[] _bodies = null;
 
-    //public GameObject kinectAvailableText;
-    //public Text handXText;
     private ulong personID;
     public bool IsAvailable;
 
@@ -50,8 +48,6 @@ public class KinectManager : MonoBehaviour {
         {
             IsAvailable = _sensor.IsAvailable;
 
-            //kinectAvailableText.SetActive(IsAvailable);
-
             _bodyFrameReader = _sensor.BodyFrameSource.OpenReader();
 
             if (!_sensor.IsOpen)
@@ -82,7 +78,7 @@ public class KinectManager : MonoBehaviour {
                 {
                     IsAvailable = true;
 
-                    if (body.TrackingId == personID)
+                    if (body.TrackingId == personID)                    
                     {
                         postion = body.Joints[JointType.HandLeft].Position;
                         handLeft = new Vector3(postion.X, postion.Y, postion.Z);
@@ -96,10 +92,6 @@ public class KinectManager : MonoBehaviour {
 
                         found = true;
                     }
-                    else
-                    {
-                        Debug.Log("Failed: " + body.TrackingId);
-                    }                    
 
                 }
                 if (!found)
@@ -124,7 +116,7 @@ public class KinectManager : MonoBehaviour {
         foreach (var pers in _bodies.Where(b => b.IsTracked)) {
             position = pers.Joints[JointType.Head].Position;
             distance = Mathf.Sqrt((position.X * position.X) + (position.Y * position.Y) + (position.Z * position.Z));
-            if (min < distance)
+            if (min > distance)
             {
                 min = distance;
                 id = pers.TrackingId;
