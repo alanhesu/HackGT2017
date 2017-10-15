@@ -20,6 +20,9 @@ public class KinectManager : MonoBehaviour {
 
     public Vector3 handLeft;
     public Vector3 handRight;
+    public float leaningPosition;
+    public HandState leftHandStatus;
+    public HandState rightHandStatus;
 
     public static KinectManager instance = null;
 
@@ -86,8 +89,12 @@ public class KinectManager : MonoBehaviour {
                         postion = body.Joints[JointType.HandRight].Position;
                         handRight = new Vector3(postion.X, postion.Y, postion.Z);
 
+                        leaningPosition = body.Lean.X;
+
+                        leftHandStatus = body.HandLeftState;
+                        rightHandStatus = body.HandRightState;
+
                         found = true;
-                        Debug.Log("Person ID: " + personID);
                     }
                     else
                     {
@@ -102,11 +109,7 @@ public class KinectManager : MonoBehaviour {
 
                 frame.Dispose();
                 frame = null;
-            } else
-            {
-                Debug.Log("No frames");
-            }            
-
+            }        
         }
 
     }
@@ -126,7 +129,6 @@ public class KinectManager : MonoBehaviour {
                 min = distance;
                 id = pers.TrackingId;
             }
-            Debug.Log("" + distance + "      " + pers.TrackingId + "    " + id);
         }    
         return id;
     }
