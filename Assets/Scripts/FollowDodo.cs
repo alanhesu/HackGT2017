@@ -41,7 +41,7 @@ public class FollowDodo : MonoBehaviour {
             if ((90 - Mathf.Abs(dodoPos.x) < 35) && (90 - Mathf.Abs(dodoPos.x) > 0))
             {
                 transform.position = offset + new Vector3(lockViewX + Vector3.Lerp(oldPos, dodoPos, .8f).x, dodoPos.y, dodoPos.z);
-                lockViewX = Vector3.Lerp(oldPos + 55, dodoPos, .8f).x - dodoPos.x;
+                lockViewX = Vector3.Lerp(oldPos, dodoPos, .8f).x - dodoPos.x;
             }
             else
             {
