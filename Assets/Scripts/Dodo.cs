@@ -4,21 +4,31 @@ using UnityEngine;
 
 public class Dodo : MonoBehaviour {    
     private float timer = 0;
-    private float HandRightPrevZ;
-    private float HandLeftPrevZ;
+    private float HandRightPrevY;
+    private float HandLeftPrevY;
     private float timerPeriod = .3f;
     private Rigidbody rb;
+
     public float thrust;
+    private float deltaY = .05f;
+    public float stamina;
+    private float baseStam = 100;
+    private float stamMult;
+    private float flapCount = 0;
+    public int agility;
 
 	// Use this for initialization
-	void Start () {
-        StartFlying(GameController.launchHeight);
+	void Start () {        
         rb = GetComponent<Rigidbody>();
-        rb.mass = 10;
-        thrust = 100;
-        HandRightPrevZ = 999999999;
-        HandLeftPrevZ = 999999999;
-	}
+        rb.mass = 1;
+        thrust = 2;
+        stamina = baseStam;
+        stamMult = .5f;
+        agility = 3;
+        HandRightPrevY = 999999999;
+        HandLeftPrevY = 999999999;
+        StartFlying(ref rb, GameController.launchHeight, GameController.startVel);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -26,16 +36,32 @@ public class Dodo : MonoBehaviour {
         timer += Time.deltaTime;       
         if (timer >= timerPeriod && KinectManager.instance.IsAvailable)
         {*/
-            if ((HandRightPrevZ - KinectManager.instance.handRight.y > .05f)
-                && (HandLeftPrevZ - KinectManager.instance.handLeft.y > .05f))
+        if (KinectManager.instance.IsAvailable)
+        {
+            if ((HandRightPrevY - KinectManager.instance.handRight.y > deltaY)
+                && (HandLeftPrevY - KinectManager.instance.handLeft.y > deltaY))
             {
-                rb.AddForce(0, thrust, 0, ForceMode.Impulse);                
-                timer = 0;
-                Debug.Log("FLAP");
+                if (stamina - Mathf.Sqrt(flapCount) * stamMult> 0)
+                {
+                    stamina -= Mathf.Sqrt(flapCount) * stamMult;
+                }               
+                rb.AddForce(0, thrust * stamina / baseStam, 0, ForceMode.Impulse);
+                flapCount++;
+                Debug.Log("" + thrust * stamina / baseStam + "    " + flapCount);
             }
-        HandRightPrevZ = KinectManager.instance.handRight.y;
-        HandLeftPrevZ = KinectManager.instance.handLeft.y;
-        Debug.Log(HandRightPrevZ);
+            HandRightPrevY = KinectManager.instance.handRight.y;
+            HandLeftPrevY = KinectManager.instance.handLeft.y;
+            //Debug.Log(HandRightPrevY);
+
+            if (Mathf.Abs(KinectManager.instance.leaningPosition) > .2)
+            {
+                rb.velocity = new Vector3(KinectManager.instance.leaningPosition, rb.velocity.y, rb.velocity.z);
+            }
+            //Debug.Log("X  " + rb.position.x);
+            //Quaternion rotTarget = Quaternion.Euler(0, 0, 45 * KinectManager.instance.leaningPosition);
+            //rb.transform.rotation = Quaternion.Slerp(transform.rotation, rotTarget, .8f);
+            rb.transform.eulerAngles = new Vector3(0, 0, -45 * KinectManager.instance.leaningPosition);
+        }
         //}
         /*      
         timer += Time.deltaTime;       
@@ -53,10 +79,12 @@ public class Dodo : MonoBehaviour {
         {
             rb.AddForce(0, thrust, 0, ForceMode.Impulse);
         }       
+        
 	}
 
-    void StartFlying(float startHeight)
+    void StartFlying(ref Rigidbody rb, float startHeight, float startVel)
     {
-        transform.position = new Vector3(0, startHeight, 0);        
+        rb.transform.position = new Vector3(0, startHeight, 0);
+        rb.velocity = new Vector3(0, 0, startVel);        
     }
 }
