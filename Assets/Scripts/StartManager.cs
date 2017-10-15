@@ -7,12 +7,12 @@ public class StartManager : MonoBehaviour {
     public void LoadScene(string scene)
     {
         Application.LoadLevel(scene);
-        Debug.Log("Planning");
+        //Debug.Log("Planning");
     }
 
     public void quit()
     {
-        Debug.Log("Quit");
+        //Debug.Log("Quit");
         Application.Quit();
     }
 }

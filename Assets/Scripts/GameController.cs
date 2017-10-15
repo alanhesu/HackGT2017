@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour {
     public GameObject tree;
 
     public static float thrust = 2;
-    public static float stamMult = .5f;
+    public static float stamMult = 1;
 
     private GameObject[] trees;
 
@@ -140,7 +140,7 @@ public class GameController : MonoBehaviour {
         if (cash - numUpStam * 300 >= 0)
         {
             cash -= 300 * numUpStam;
-            stamMult *= .7f;
+            stamMult += .2f * Mathf.Pow(.9f, numUpStam);
             numUpStam++;
         }
     }
@@ -150,7 +150,7 @@ public class GameController : MonoBehaviour {
         if (cash - numUpThrust * 300 >= 0)
         {
             cash -= 300 * numUpThrust;
-            thrust += .5f;
+            thrust += .5f * Mathf.Pow(.9f, numUpThrust);
             numUpThrust++;
         }
     }
@@ -160,7 +160,7 @@ public class GameController : MonoBehaviour {
         if (cash - numUpHeight * 300 >= 0)
         {
             cash -= 300 * numUpHeight;
-            launchHeight += 10f;
+            launchHeight += 10f * Mathf.Pow(.9f, numUpHeight);
             numUpHeight++;
         }
     }

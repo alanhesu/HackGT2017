@@ -57,9 +57,9 @@ public class Dodo : MonoBehaviour {
             else if ((HandRightPrevY - KinectManager.instance.handRight.y > deltaY)
                 && (HandLeftPrevY - KinectManager.instance.handLeft.y > deltaY))
             {
-                if (stamina - Mathf.Sqrt(flapCount) * stamMult> 0)
+                if (stamina - Mathf.Sqrt(flapCount/stamMult)> 0)
                 {
-                    stamina -= Mathf.Sqrt(flapCount) * stamMult;
+                    stamina -= Mathf.Sqrt(flapCount/stamMult);
                 }               
                 rb.AddForce(0, thrust * stamina / baseStam, 0, ForceMode.Impulse);
                 flapCount++;
